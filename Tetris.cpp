@@ -107,6 +107,112 @@ Tetris::transMino(int direction){
 		for(int j=0; j < NUM_CELL; j++){
 			mino[0][j] = 0B00000000;
 		}
-	} else 
-	
+	}
 }
+
+/*
+ * ミノを落とす
+ */
+Tetris::dropMino(){
+	for(int i=0; i < NUM_ROW; i++){
+		uint8_t t = 0B00000000;
+		for(int j=0; j < NUM_CELL; j++){
+			t = 0B00000001 & mino[i][j];  
+			
+			mino[i][j] >>= 1;
+			
+			if( j>0 && t>0 ){
+				mino[i][j] |= 0B10000000;
+			}
+		}
+	}
+}
+
+/*
+ * ミノが着地しているか
+ */
+Tetris::hasLandedMino(){
+	uint8_t mino_after[NUM_ROW][NUM_CELL];
+
+	for(int i=0; i < NUM_ROW; i++){
+		uint8_t t = 0B00000000;
+		for(int j=0; j < NUM_CELL; j++){
+			t = 0B00000001 & mino[i][j];  
+			
+			mino_after[i][j] = mino[i][j] >> 1;
+			
+			if( j>0 && t>0 ){
+				mino_after[i][j] |= 0B10000000;
+			}
+		}
+	}
+
+	for(int i=0; i < NUM_ROW; i++){
+		for(int j=0; j < NUM_CELL; j++){
+			if(mino[i][j] & mino_after[i][j] > 0) return true;
+		}
+	}
+	return false;
+}
+
+/*
+ * 横一列を消す
+ */
+Tetris::deleteLine(){
+	uint8_t masks[NUM_CELL] = { 0B11111111, 0B11111111, 0B11111111, 0B11111111};
+	for (int j = 0; j < NUM_CELL; j++){
+		uint8_t m = 0B10000000;
+		while (m > 0){
+			for (int i = 0; i < NUM_ROW; i++){
+				if( m & background[i][j] < 1){
+					m >>= 1;
+					masks[j] >>= 1;
+					break;
+				}
+
+				if (i == NUM_ROW - 1){ // 横一列を削除
+					unit8_t tmp [NUM_ROW][NUM_CELL]; 
+					// 削除される行より下を保存
+					for (int i = 0; i < NUM_ROW; i++){
+						for (int j = 0; j < NUM_CELL; j++){
+							tmp[i][j] = background[i][j] & masks[j];
+						}
+					}
+					// 全体を1段下げる
+					dropMino();
+
+					// masksの0と1の反転したマスク
+					uint8_t reverse[NUM_CELL];
+					for (int i = 0; i < NUM_CELL; i++){
+						reverse[i] = ~masks[i];
+					}
+					
+					// 1段下げた行と保存した行を合わせる
+					for (int i = 0; i < NUM_ROW; i++){
+						for (int j = 0; j < NUM_CELL; j++){
+							background[i][j] &= reverse[i][j];
+							background[i][j] |= tmp[i][j];
+						}
+					}
+					
+					m >>= 1;
+					masks[j] >>= 1;
+				}
+				
+			}
+			
+		}
+	}
+}
+
+/*
+ * minoとbackgroundをled_patternに合わせる
+ */
+Tetris::setPattern(){
+	for (int i = 0; i < NUM_ROW; i++){
+		for (int j = 0; j < NUM_CELL; j++){
+			led_pattern[i][j] = mino[i][j] | background[i][j];
+		}
+	}
+}
+

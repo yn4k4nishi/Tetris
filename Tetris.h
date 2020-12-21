@@ -5,21 +5,28 @@
 #ifndef TETRIS
 #define TETRIS
 
-enum class TET_MINO{
-	I,O,S,Z,J,L,T
+enum TET_MINO{
+	I = 1,
+	O = 2,
+	S = 3,
+	Z = 4,
+	J = 5,
+	L = 6,
+	T = 7
 }
 
 class Tetris{
 public:
 	Tetris();
 	
-	void selectMino();    // ランダムにミノを1つ選択する
-	bool isGameOver();    // ゲーム終了か判定する
-	void rotateMino();    // ミノを回転させる
-	void transMino();     // ミノを横に移動させる
-	void dropMino();      // ミノを落とす
-	bool hasLandedMino(); // ミノが着地しているか
-	void deleteLine();    // 横一列を消す
+	void selectMino(TET_MINO); // ランダムにミノを1つ選択する
+	bool isGameOver();         // ゲーム終了か判定する
+	void rotateMino();         // ミノを回転させる
+	void transMino();          // ミノを横に移動させる
+	void dropMino();           // ミノを落とす
+	bool hasLandedMino();      // ミノが着地しているか
+	void deleteLine();         // 横一列を消す
+	void setPattern();         // minoとbackgroundをled_patternに合わせる
 
 	static const int NUM_ROW  = 8;
 	static const int NUM_COL  = 8;
