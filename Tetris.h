@@ -19,6 +19,7 @@ class Tetris{
 public:
 	Tetris();
 	
+
 	void selectMino(TET_MINO); // ランダムにミノを1つ選択する
 	bool isGameOver();         // ゲーム終了か判定する
 	void rotateMino();         // ミノを回転させる
@@ -26,16 +27,30 @@ public:
 	void dropMino();           // ミノを落とす
 	bool hasLandedMino();      // ミノが着地しているか
 	void putMino();            // minoをbackgroundに移す
-	void deleteLine();         // 横一列を消す
+	bool deleteLine();         // 横一列を消す
 	void setPattern();         // minoとbackgroundをled_patternに合わせる
+	void resetMino();          // minoを初期化
 
 	static const int NUM_ROW  = 8;
 	static const int NUM_COL  = 8;
 	static const int NUM_CELL = 4;
 
-	uint8_t led_pattern[NUM_ROW][NUM_CELL];
+	uint8_t led_pattern[NUM_ROW][NUM_CELL] = {
+		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
+	 	{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 1
+ 	 	{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 2
+ 	 	{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 3
+  		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 4
+  		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 5
+  		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 6
+  		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
+	};
 
 private:
+	int mino_pos = 0; // ミノの場所。正が右で、負が左
+	
+	void dropBG();			   // backgroudを一つ下げる
+
 	uint8_t mino[NUM_ROW][NUM_CELL] = {
 		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
 	 	{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 1
@@ -48,11 +63,11 @@ private:
 	};
 
 	uint8_t background[NUM_ROW][NUM_CELL] = {
-		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
-		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 1
-		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 2
- 	 	{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 3
-  		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 4
+		{ 0B00000000, 0B00000000, 0B00000000, 0B00000011 }, // Line 0
+		{ 0B00000000, 0B00000000, 0B00000000, 0B00000011 }, // Line 1
+		{ 0B00000000, 0B00000000, 0B00000000, 0B00000011 }, // Line 2
+ 	 	{ 0B00000000, 0B00000000, 0B00000000, 0B00000011 }, // Line 3
+  		{ 0B00000000, 0B00000000, 0B00000000, 0B00000111 }, // Line 4
   		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 5
   		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 6
   		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
