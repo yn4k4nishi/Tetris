@@ -18,7 +18,6 @@ enum TET_MINO{
 class Tetris{
 public:
 	Tetris();
-	
 
 	void selectMino(TET_MINO); // ランダムにミノを1つ選択する
 	bool isGameOver();         // ゲーム終了か判定する
@@ -29,7 +28,7 @@ public:
 	void putMino();            // minoをbackgroundに移す
 	bool deleteLine();         // 横一列を消す
 	void setPattern();         // minoとbackgroundをled_patternに合わせる
-	void resetMino();          // minoを初期化
+	void reset();              // 初期化
 
 	static const int NUM_ROW  = 8;
 	static const int NUM_COL  = 8;
@@ -46,8 +45,10 @@ public:
   		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
 	};
 
+	int mino_pos_x = 0; // ミノのx座標。正が右で、負が左
+	int mino_pos_y = 0; // ミノのy座標。下が正
+	
 private:
-	int mino_pos = 0; // ミノの場所。正が右で、負が左
 	
 	void dropBG();			   // backgroudを一つ下げる
 

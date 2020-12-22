@@ -15,7 +15,9 @@ Tetris::Tetris(){}
  * ランダムにミノを1つ選択する
  */
 void Tetris::selectMino(TET_MINO mino_type){
-	mino_pos = 0;
+	mino_pos_x = 0;
+	mino_pos_y = 0;
+
 	switch(mino_type){
 		case TET_MINO::I:
 			setMino_I(mino);
@@ -86,7 +88,7 @@ void Tetris::rotateMino(){
  * 	引数が負 : 左に1つ移動
  */
 void Tetris::transMino(int pos){
-	int direction = pos - mino_pos;
+	int direction = pos - mino_pos_x;
 	while (direction != 0){ // 指定した位置に移動するまでループ
 		if(direction > 0){ //右に移動
 			for(int i=0; i < Tetris::NUM_CELL; i++)
@@ -100,7 +102,7 @@ void Tetris::transMino(int pos){
 			for(int j=0; j < Tetris::NUM_CELL; j++){
 				mino[Tetris::NUM_ROW-1][j] = 0B00000000;
 			}
-			mino_pos += 1;
+			mino_pos_x += 1;
 		} else 
 		if(direction < 0){ //左に移動
 			for(int i=0; i < Tetris::NUM_CELL; i++)
@@ -114,9 +116,9 @@ void Tetris::transMino(int pos){
 			for(int j=0; j < Tetris::NUM_CELL; j++){
 				mino[0][j] = 0B00000000;
 			}
-			mino_pos -= 1;
+			mino_pos_x -= 1;
 		}
-		direction = pos - mino_pos;
+		direction = pos - mino_pos_x;
 	}
 }
 
@@ -131,6 +133,7 @@ void Tetris::dropMino(){
 		}
 		mino[i][0] >>= 1;
 	}
+	mino_pos_y += 1;
 }
 
 /*
@@ -258,10 +261,12 @@ void Tetris::setPattern(){
 /*
  * minoを初期化
  */
-void Tetris::resetMino(){
+void Tetris::reset(){
 	for (int i = 0; i < Tetris::NUM_ROW; i++){
 		for (int j = 0; j < Tetris::NUM_CELL; j++){
 			mino[i][j] = 0B00000000;
+			background[i][j] = 0B00000000;
+			led_pattern[i][j] = 0B00000000;
 		}
 	}
 }
