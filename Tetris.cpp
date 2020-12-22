@@ -6,7 +6,12 @@
 #include "Tetris.h"
 #include "minos.h"
 
-Tetris::Tetris(){}
+/*
+ * コンストラクタ
+ */
+Tetris::Tetris(){
+	Tetris::setPattern();
+}
 
 /*
  * ランダムにミノを1つ選択する
