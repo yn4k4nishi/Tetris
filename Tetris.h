@@ -13,7 +13,7 @@ enum TET_MINO{
 	J = 5,
 	L = 6,
 	T = 7
-}
+};
 
 class Tetris{
 public:
@@ -22,7 +22,7 @@ public:
 	void selectMino(TET_MINO); // ランダムにミノを1つ選択する
 	bool isGameOver();         // ゲーム終了か判定する
 	void rotateMino();         // ミノを回転させる
-	void transMino();          // ミノを横に移動させる
+	void transMino(int);          // ミノを横に移動させる
 	void dropMino();           // ミノを落とす
 	bool hasLandedMino();      // ミノが着地しているか
 	void deleteLine();         // 横一列を消す
@@ -45,6 +45,7 @@ private:
   		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 6
   		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
 	};
+
 	uint8_t background[NUM_ROW][NUM_CELL] = {
 		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
 		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 1
@@ -55,7 +56,6 @@ private:
   		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 6
   		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
 	};
-
-}
+};
 
 #endif

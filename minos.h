@@ -4,8 +4,8 @@
 
 #include "Tetris.h"
 
-void setMino_I(uint8_t pattern[NUM_ROW][NUM_CELL]){
-	uint8_t mino_[NUM_ROW][NUM_CELL] = {
+void setMino_I(uint8_t pattern[Tetris::NUM_ROW][Tetris::NUM_CELL]){
+	uint8_t mino_[Tetris::NUM_ROW][Tetris::NUM_CELL] = {
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 1
                 { 0B10000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 2
@@ -16,16 +16,16 @@ void setMino_I(uint8_t pattern[NUM_ROW][NUM_CELL]){
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
         };
 
-	for(int i=0; i < NUM_ROW; i++){
-		for(int j=0; j < NUM_CELL; j++){
+	for(int i=0; i < Tetris::NUM_ROW; i++){
+		for(int j=0; j < Tetris::NUM_CELL; j++){
 			pattern[i][j] |= mino_[i][j]; 
 		}
 	}
 
 }
 
-void setMino_O(uint8_t pattern[NUM_ROW][NUM_CELL]){
-	uint8_t mino_[NUM_ROW][NUM_CELL] = {
+void setMino_O(uint8_t pattern[Tetris::NUM_ROW][Tetris::NUM_CELL]){
+	uint8_t mino_[Tetris::NUM_ROW][Tetris::NUM_CELL] = {
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 1
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 2
@@ -36,16 +36,16 @@ void setMino_O(uint8_t pattern[NUM_ROW][NUM_CELL]){
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
         };
 
-	for(int i=0; i < NUM_ROW; i++){
-		for(int j=0; j < NUM_CELL; j++){
+	for(int i=0; i < Tetris::NUM_ROW; i++){
+		for(int j=0; j < Tetris::NUM_CELL; j++){
 			pattern[i][j] |= mino_[i][j]; 
 		}
 	}
 
 }
 
-void setMino_S(uint8_t pattern[NUM_ROW][NUM_CELL]){
-	uint8_t mino_[NUM_ROW][NUM_CELL] = {
+void setMino_S(uint8_t pattern[Tetris::NUM_ROW][Tetris::NUM_CELL]){
+	uint8_t mino_[Tetris::NUM_ROW][Tetris::NUM_CELL] = {
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 1
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 2
@@ -56,16 +56,16 @@ void setMino_S(uint8_t pattern[NUM_ROW][NUM_CELL]){
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
         };
 
-	for(int i=0; i < NUM_ROW; i++){
-		for(int j=0; j < NUM_CELL; j++){
+	for(int i=0; i < Tetris::NUM_ROW; i++){
+		for(int j=0; j < Tetris::NUM_CELL; j++){
 			pattern[i][j] |= mino_[i][j]; 
 		}
 	}
 
 }
 
-void setMino_Z(uint8_t pattern[NUM_ROW][NUM_CELL]){
-	uint8_t mino_[NUM_ROW][NUM_CELL] = {
+void setMino_Z(uint8_t pattern[Tetris::NUM_ROW][Tetris::NUM_CELL]){
+	uint8_t mino_[Tetris::NUM_ROW][Tetris::NUM_CELL] = {
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 1
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 2
@@ -76,15 +76,15 @@ void setMino_Z(uint8_t pattern[NUM_ROW][NUM_CELL]){
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
         };
 
-	for(int i=0; i < NUM_ROW; i++){
-		for(int j=0; j < NUM_CELL; j++){
+	for(int i=0; i < Tetris::NUM_ROW; i++){
+		for(int j=0; j < Tetris::NUM_CELL; j++){
 			pattern[i][j] |= mino_[i][j]; 
 		}
 	}
 
 }
-void setMino_J(uint8_t pattern[NUM_ROW][NUM_CELL]){
-	uint8_t mino_[NUM_ROW][NUM_CELL] = {
+void setMino_J(uint8_t pattern[Tetris::NUM_ROW][Tetris::NUM_CELL]){
+	uint8_t mino_[Tetris::NUM_ROW][Tetris::NUM_CELL] = {
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 1
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 2
@@ -95,16 +95,16 @@ void setMino_J(uint8_t pattern[NUM_ROW][NUM_CELL]){
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
         };
 
-	for(int i=0; i < NUM_ROW; i++){
-		for(int j=0; j < NUM_CELL; j++){
+	for(int i=0; i < Tetris::NUM_ROW; i++){
+		for(int j=0; j < Tetris::NUM_CELL; j++){
 			pattern[i][j] |= mino_[i][j]; 
 		}
 	}
 
 }
 
-void setMino_L(uint8_t pattern[NUM_ROW][NUM_CELL]){
-	uint8_t mino_[NUM_ROW][NUM_CELL] = {
+void setMino_L(uint8_t pattern[Tetris::NUM_ROW][Tetris::NUM_CELL]){
+	uint8_t mino_[Tetris::NUM_ROW][Tetris::NUM_CELL] = {
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 1
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 2
@@ -115,16 +115,16 @@ void setMino_L(uint8_t pattern[NUM_ROW][NUM_CELL]){
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
         };
 
-	for(int i=0; i < NUM_ROW; i++){
-		for(int j=0; j < NUM_CELL; j++){
+	for(int i=0; i < Tetris::NUM_ROW; i++){
+		for(int j=0; j < Tetris::NUM_CELL; j++){
 			pattern[i][j] |= mino_[i][j]; 
 		}
 	}
 
 }
 
-void setMino_T(uint8_t pattern[NUM_ROW][NUM_CELL]){
-	uint8_t mino_[NUM_ROW][NUM_CELL] = {
+void setMino_T(uint8_t pattern[Tetris::NUM_ROW][Tetris::NUM_CELL]){
+	uint8_t mino_[Tetris::NUM_ROW][Tetris::NUM_CELL] = {
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 1
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 2
@@ -135,8 +135,8 @@ void setMino_T(uint8_t pattern[NUM_ROW][NUM_CELL]){
                 { 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
         };
 
-	for(int i=0; i < NUM_ROW; i++){
-		for(int j=0; j < NUM_CELL; j++){
+	for(int i=0; i < Tetris::NUM_ROW; i++){
+		for(int j=0; j < Tetris::NUM_CELL; j++){
 			pattern[i][j] |= mino_[i][j]; 
 		}
 	}
