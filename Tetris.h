@@ -25,6 +25,7 @@ public:
 	void transMino(int);       // ミノを横に移動させる
 	void dropMino();           // ミノを落とす
 	bool hasLandedMino();      // ミノが着地しているか
+	void putMino();            // minoをbackgroundに移す
 	void deleteLine();         // 横一列を消す
 	void setPattern();         // minoとbackgroundをled_patternに合わせる
 

@@ -161,6 +161,19 @@ bool Tetris::hasLandedMino(){
 }
 
 /*
+ * minoをbackgroundに移す
+ */
+void Tetris::putMino(){
+	for (int i = 0; i < Tetris::NUM_ROW; i++){
+		for (int j = 0; j < Tetris::NUM_CELL; j++){
+			background[i][j] |= mino[i][j];
+			mino[i][j] = 0B00000000;	
+		}
+	}
+	
+}
+
+/*
  * 横一列を消す
  */
 void Tetris::deleteLine(){
