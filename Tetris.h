@@ -46,11 +46,12 @@ public:
 	};
 
 	int mino_pos_x = 0; // ミノのx座標。正が右で、負が左
-	int mino_pos_y = 0; // ミノのy座標。下が正
+	int mino_orign_x, mino_orign_y; // ミノの回転中心
 	
 private:
-	
-	void dropBG();			   // backgroudを一つ下げる
+	TET_MINO mino_type; // ミノの種類
+
+	void dropBG(); // backgroudを一つ下げる
 
 	uint8_t mino[NUM_ROW][NUM_CELL] = {
 		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
