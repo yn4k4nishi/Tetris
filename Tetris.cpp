@@ -22,31 +22,31 @@ void Tetris::selectMino(TET_MINO mino_type_){
 
 	switch(mino_type){
 		case TET_MINO::I:
-			setMino_I(mino);
+			setMino_I(mino,rotation_num);
 			break;
 
 		case TET_MINO::O:
-			setMino_O(mino);
+			setMino_O(mino,rotation_num);
 			break;
 
 		case TET_MINO::S:
-			setMino_S(mino);
+			setMino_S(mino,rotation_num);
 			break;
 
 		case TET_MINO::Z:
-			setMino_Z(mino);
+			setMino_Z(mino,rotation_num);
 			break;
 
 		case TET_MINO::J:
-			setMino_J(mino);
+			setMino_J(mino,rotation_num);
 			break;
 
 		case TET_MINO::L:
-			setMino_L(mino);
+			setMino_L(mino,rotation_num);
 			break;
 
 		case TET_MINO::T:
-			setMino_T(mino);
+			setMino_T(mino,rotation_num);
 			break;
 	}
 }
@@ -83,24 +83,30 @@ bool Tetris::isGameOver(){
 void Tetris::rotateMino(){
 	switch (mino_type){
 			case TET_MINO::I:
+			setMino_I(mino, rotation_num);
 			break;
 
 		case TET_MINO::O: // Oミノは回転しない。
 			break;
 
 		case TET_MINO::S:
+			setMino_S(mino, rotation_num);
 			break;
 
 		case TET_MINO::Z:
+			setMino_Z(mino, rotation_num);
 			break;
 
 		case TET_MINO::J:
+			setMino_J(mino, rotation_num);
 			break;
 
 		case TET_MINO::L:
+			setMino_L(mino, rotation_num);
 			break;
 
 		case TET_MINO::T:
+			setMino_T(mino, rotation_num);
 			break;
 	}
 	return; // TODO:実装

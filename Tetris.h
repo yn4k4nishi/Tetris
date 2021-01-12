@@ -47,7 +47,8 @@ public:
 
 	int mino_pos_x = 0; // ミノのx座標。正が右で、負が左
 	int mino_orign_x, mino_orign_y; // ミノの回転中心
-	
+	int rotation_num = 0; //
+
 private:
 	TET_MINO mino_type; // ミノの種類
 
