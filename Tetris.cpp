@@ -81,13 +81,17 @@ bool Tetris::isGameOver(){
  * ミノを回転させる
  */
 void Tetris::rotateMino(){
+	rotation_num += 1;
+	rotation_num %= 4;
+
+	mino_pos_x = 0;
 	switch (mino_type){
 			case TET_MINO::I:
 			setMino_I(mino, rotation_num);
 			break;
 
 		case TET_MINO::O: // Oミノは回転しない。
-			break;
+			return;
 
 		case TET_MINO::S:
 			setMino_S(mino, rotation_num);
@@ -109,6 +113,14 @@ void Tetris::rotateMino(){
 			setMino_T(mino, rotation_num);
 			break;
 	}
+
+	for (size_t i = 0; i < drop_num; i++){
+		dropMino(false);
+		if (hasLandedMino()){
+			break;
+		}
+	}
+
 	return; // TODO:実装
 }
 
@@ -157,7 +169,7 @@ void Tetris::transMino(int pos){
 /*
  * ミノを落とす
  */
-void Tetris::dropMino(){
+void Tetris::dropMino(bool is_count){
 	for(int i=0; i < Tetris::NUM_ROW; i++){
 		for(int j=NUM_CELL-1; j > 0; j--){
 			mino[i][j] >>= 1;
@@ -165,7 +177,11 @@ void Tetris::dropMino(){
 		}
 		mino[i][0] >>= 1;
 	}
-	mino_orign_y += 1;
+
+	if (is_count){
+		drop_num += 1;
+	}
+
 }
 
 /*
@@ -206,6 +222,8 @@ bool Tetris::hasLandedMino(){
 	for(int i=0; i < NUM_ROW; i++){
 		for(int j=0; j < NUM_CELL; j++){
 			if((background[i][j] & mino_next[i][j]) != 0B00000000){
+				drop_num = 0;
+				rotation_num = 0;
 				return true;
 			} 
 		}
