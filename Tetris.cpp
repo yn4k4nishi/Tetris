@@ -17,8 +17,6 @@ Tetris::Tetris(){}
 void Tetris::selectMino(TET_MINO mino_type_){
 	this->mino_type = mino_type_;
 	mino_pos_x = 0;
-	mino_orign_x = 4;
-	mino_orign_y = 0;
 
 	switch(mino_type){
 		case TET_MINO::I:
@@ -145,7 +143,6 @@ void Tetris::transMino(int pos){
 				mino[Tetris::NUM_ROW-1][j] = 0B00000000;
 			}
 			mino_pos_x += 1;
-			mino_orign_y -= 1;
 		} else 
 		if(direction < 0){ //左に移動
 			for(int i=0; i < Tetris::NUM_CELL; i++)
@@ -160,7 +157,6 @@ void Tetris::transMino(int pos){
 				mino[0][j] = 0B00000000;
 			}
 			mino_pos_x -= 1;
-			mino_orign_y += 1;
 		}
 		direction = pos - mino_pos_x;
 	}

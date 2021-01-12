@@ -19,16 +19,16 @@ class Tetris{
 public:
 	Tetris();
 
-	void selectMino(TET_MINO); // ランダムにミノを1つ選択する
-	bool isGameOver();         // ゲーム終了か判定する
-	void rotateMino();         // ミノを回転させる
-	void transMino(int);       // ミノを横に移動させる
-	void dropMino(bool is_count = true);           // ミノを落とす
-	bool hasLandedMino();      // ミノが着地しているか
-	void putMino();            // minoをbackgroundに移す
-	bool deleteLine();         // 横一列を消す
-	void setPattern();         // minoとbackgroundをled_patternに合わせる
-	void reset();              // 初期化
+	void selectMino(TET_MINO); 				// ランダムにミノを1つ選択する
+	bool isGameOver();         				// ゲーム終了か判定する
+	void rotateMino();         				// ミノを回転させる
+	void transMino(int);       				// ミノを横に移動させる
+	void dropMino(bool is_count = true);	// ミノを落とす
+	bool hasLandedMino();      				// ミノが着地しているか
+	void putMino();            				// minoをbackgroundに移す
+	bool deleteLine();         				// 横一列を消す
+	void setPattern();         				// minoとbackgroundをled_patternに合わせる
+	void reset();              				// 初期化
 
 	static const int NUM_ROW  = 8;
 	static const int NUM_COL  = 8;
@@ -46,8 +46,7 @@ public:
 	};
 
 	int mino_pos_x = 0; // ミノのx座標。正が右で、負が左
-	int mino_orign_x, mino_orign_y; // ミノの回転中心
-	
+
 	int drop_num = 0;
 	int rotation_num = 0; //
 
