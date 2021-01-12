@@ -199,7 +199,11 @@ void Tetris::dropBG(){
 bool Tetris::hasLandedMino(){
 	//既に底にミノがある場合
 	for (int i = 0; i < NUM_ROW; i++){
-		if((mino[i][NUM_CELL-1] & 0B00000001) > 0) return true;
+		if((mino[i][NUM_CELL-1] & 0B00000001) > 0) {
+			drop_num = 0;
+			rotation_num = 0;
+			return true;
+		}
 	}
 	
 
