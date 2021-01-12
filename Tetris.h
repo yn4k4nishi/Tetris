@@ -45,13 +45,12 @@ public:
   		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }  // Line 7
 	};
 
-	int mino_pos_x = 0; // ミノのx座標。正が右で、負が左
-
-	int drop_num = 0;
-	int rotation_num = 0; //
 
 private:
-	TET_MINO mino_type; // ミノの種類
+	TET_MINO mino_type;   // ミノの種類
+	int mino_pos_x = 0;   // ミノのx座標。正が右で、負が左
+	int drop_num = 0;     // ミノがどれだけ落ちたか
+	int rotation_num = 0; // ミノの回転
 
 	void dropBG(); // backgroudを一つ下げる
 
