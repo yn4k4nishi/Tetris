@@ -257,32 +257,9 @@ bool Tetris::deleteLine(){
 				}
 
 				// 一列削除する
-				// background[][j]のmaskの位置を消す。
 				if(i == NUM_ROW-1){
-					//動かさないところを保存しておく
-					uint8_t save[NUM_ROW][NUM_CELL];
-					for (int t = 0; t < NUM_CELL; t++){
-						for (int y = 0; y < NUM_ROW; y++){
-							if(j > t){ // 消す列より上の部分
-								save[y][t] = 0B00000000;
-							}else if(j < t){ //消す列より下の部分
-								save[y][t] = background[y][t];
-								background[y][t] = 0B00000000;
-							}else{ //マスクを使う部分
-								save[y][t] = background[y][t] & (mask - 1);
-								background[y][t] &= ~((mask - 1) << 1);
-							}
-						}
-					}
-
-					//一段下げる
-					dropBG();
-
-					// saveとbackgroundを合わせる
-					for (int t = 0; t < NUM_CELL; t++){
-						for (int y = 0; y < NUM_ROW; y++){
-							background[y][t] |= save[y][t];
-						}
+					for (int t = 0; t < NUM_ROW; t++){
+						background[t][j] &= ~mask;
 					}
 					
 					return true;
