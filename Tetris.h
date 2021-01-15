@@ -33,6 +33,8 @@ public:
 	static const int NUM_ROW  = 8;
 	static const int NUM_COL  = 8;
 	static const int NUM_CELL = 4;
+	
+	int interval_ms = 500; // インターバル
 
 	uint8_t led_pattern[NUM_ROW][NUM_CELL] = {
 		{ 0B00000000, 0B00000000, 0B00000000, 0B00000000 }, // Line 0
@@ -47,10 +49,10 @@ public:
 
 
 private:
-	TET_MINO mino_type;   // ミノの種類
-	int mino_pos_x = 0;   // ミノのx座標。正が右で、負が左
-	int drop_num = 0;     // ミノがどれだけ落ちたか
-	int rotation_num = 0; // ミノの回転
+	TET_MINO mino_type;    // ミノの種類
+	int mino_pos_x = 0;    // ミノのx座標。正が右で、負が左
+	int drop_num = 0;      // ミノがどれだけ落ちたか
+	int rotation_num = 0;  // ミノの回転
 
 	void dropBG(); // backgroudを一つ下げる
 
